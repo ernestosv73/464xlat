@@ -3,7 +3,25 @@ name: siitdc
   
 topology:
   nodes:
-         
+  
+    rtinetipv6:
+      kind: linux
+      image: quay.io/frrouting/frr:8.4.1
+      binds:
+        - rtinetipv6/daemons:/etc/frr/daemons
+        - rtinetipv6/frr.conf:/etc/frr/frr.conf
+      exec:
+       - "sysctl -w net.ipv6.conf.all.forwarding=1" 
+     
+    rtinetipv4:
+      kind: linux
+      image: quay.io/frrouting/frr:8.4.1
+      binds:
+        - rtinetipv4/daemons:/etc/frr/daemons
+        - rtinetipv4/frr.conf:/etc/frr/frr.conf
+      exec:
+       - "sysctl -w net.ipv6.conf.all.forwarding=1" 
+       
     router1:
       kind: linux
       image: quay.io/frrouting/frr:8.4.1
