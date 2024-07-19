@@ -57,7 +57,9 @@ topology:
   links:
     - endpoints: ["router1:eth1", "SRV1:eth1"]
     - endpoints: ["router1:eth2", "SRVSIIT:eth1"]
-    - endpoints: ["router1:eth3", "PC1:eth1"]
-    - endpoints: [PC2:eth1", "SRVSIIT:eth2"]
+    - endpoints: ["router1:eth3", "rtinetipv6:eth1"]
+    - endpoints: ["rtinetipv6:eth2", "PC1:eth1"]
+    - endpoints: ["SRVSIIT:eth2", "rtinetipv4:eth1"]
+    - endpoints: ["rtinetipv4:eth2", "PC2:eth1"]
     
      
