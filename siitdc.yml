@@ -14,7 +14,7 @@ topology:
        - "sysctl -w net.ipv6.conf.all.forwarding=1"     
     SRV1:
       kind: linux
-      image: ubuntu2024:latest
+      image: ubuntu2204:latest
       exec:
       - ip -6 route del default dev eth0
 
