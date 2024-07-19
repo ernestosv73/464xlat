@@ -12,34 +12,34 @@ topology:
         - router1/frr.conf:/etc/frr/frr.conf
       exec:
        - "sysctl -w net.ipv6.conf.all.forwarding=1"     
-    PC1:
+    SRV1:
       kind: linux
-      image: docker.io/esanchezv/kaliipv6v2.1:latest
+      image: ubuntu2024:latest
       exec:
       - ip -6 route del default dev eth0
 
-    PC2:
+    SRVSIIT:
       kind: linux
-      image: siit-dcv2:latest
+      image: siit-dc:latest
       exec:
        - ip -6 route del default dev eth0 
        - "sysctl -w net.ipv4.ip_forward=1"
        - "sysctl -w net.ipv6.conf.all.forwarding=1"
-    PC3:
+    PC1:
       kind: linux
       image: docker.io/wbitt/network-multitool:extra
       exec:
       - ip -6 route del default dev eth0  
 
-    PC4:
+    PC2:
       kind: linux
       image: docker.io/wbitt/network-multitool:extra
       exec:
       - ip -6 route del default dev eth0
   links:
-    - endpoints: ["router1:eth1", "PC1:eth1"]
-    - endpoints: ["router1:eth2", "PC2:eth1"]
-    - endpoints: ["router1:eth3", "PC3:eth1"]
-    - endpoints: [PC4:eth1", "PC2:eth2"]
+    - endpoints: ["router1:eth1", "SRV1:eth1"]
+    - endpoints: ["router1:eth2", "SRVSIIT:eth1"]
+    - endpoints: ["router1:eth3", "PC1:eth1"]
+    - endpoints: [PC2:eth1", "SRVSIIT:eth2"]
     
      
