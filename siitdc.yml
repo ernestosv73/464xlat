@@ -59,8 +59,9 @@ topology:
       image: docker.io/wbitt/network-multitool:extra
       exec:
       - ip -6 route del default dev eth0
+      - ip route del default dev eth0
       - ip a add 203.0.15.2/255.255.255.0 dev eth1
-      - ip route add default via 203.0.15.1
+      - ip route add default dev eth1
   links:
     - endpoints: ["router1:eth1", "SRV1:eth1"]
     - endpoints: ["router1:eth2", "SRVSIIT:eth1"]
