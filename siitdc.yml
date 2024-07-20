@@ -43,6 +43,8 @@ topology:
       image: siit-dc:latest
       exec:
        - ip -6 route del default dev eth0
+       - ip route del default dev eth0
+       - ip route add default dev eth2
        - ip -6 addr add 2001:db8:34:2::2/64 dev eth1
        - ip a add 192.0.2.2/255.255.255.0 dev eth2
        - ip -6 route add default via 2001:db8:34:2::1
