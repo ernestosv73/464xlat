@@ -64,7 +64,7 @@ topology:
       image: docker.io/wbitt/network-multitool:extra
       exec:
       - ip -6 route del default dev eth0
-      #- ip route del default dev eth0
+      - ip route del default dev eth0
       - ip addr add 203.0.15.2/255.255.255.0 dev eth1
       - ip route add default via 203.0.15.1    
       
