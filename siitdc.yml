@@ -14,66 +14,38 @@ topology:
        - "sysctl -w net.ipv6.conf.all.forwarding=1" 
        - ip -6 route del default dev eth0
      
-    rtinetipv4:
+    tayga:
       kind: linux
-      image: quay.io/frrouting/frr:8.4.1
-      binds:
-        - rtinetipv4/daemons:/etc/frr/daemons
-        - rtinetipv4/frr.conf:/etc/frr/frr.conf
+      image: danehans/tayga:latest
+      
       exec:
-       - "sysctl -w net.ipv6.conf.all.forwarding=1" 
-       
-    router1:
-      kind: linux
-      image: quay.io/frrouting/frr:8.4.1
-      binds:
-        - router1/daemons:/etc/frr/daemons
-        - router1/frr.conf:/etc/frr/frr.conf
-      exec:
-       - "sysctl -w net.ipv6.conf.all.forwarding=1" 
        - ip -6 route del default dev eth0
+       - ip addr add 10.0.1.1/24 dev eth1
+       - ip -6 addr add 2001:db8:aaaa::2/64 dev eth2
+       - "sysctl net.ipv6.conf.all.disable_ipv6=0"
+       - "sysctl net.ipv6.conf.all.forwarding=1"
+       
     SRV1:
       kind: linux
       image: ubuntu2204:latest
       exec:
       - ip -6 route del default dev eth0
-      - ip -6 addr add 2001:db8:34:1::2/64 dev eth1
-      - ip -6 route add default via 2001:db8:34:1::1
+      - ip -6 addr add 2001:db8:100::2/64 dev eth1
+      - ip -6 route add default via 2001:db8:100::1
 
-    SRVSIIT:
-      kind: linux
-      image: siit-dc:latest
-      exec:
-       - ip -6 route del default dev eth0
-       #- ip route del default dev eth0
-       - ip -6 addr add 2001:db8:34:2::2/64 dev eth1
-       - ip -6 route add default via 2001:db8:34:2::1
-       - ip addr add 192.0.2.2/255.255.255.0 dev eth2
-       - ip route add 203.0.15.0/255.255.255.0 via 192.0.2.1
-       - "sysctl -w net.ipv4.ip_forward=1"
-       - "sysctl -w net.ipv6.conf.all.forwarding=1"
+    
     PC1:
       kind: linux
       image: docker.io/wbitt/network-multitool:extra
       exec:
       - ip -6 route del default dev eth0  
-      - ip -6 addr add 2001:db8:ab::2/64 dev eth1
-      - ip -6 route add default via 2001:db8:ab::1
-    PC2:
-      kind: linux
-      image: docker.io/wbitt/network-multitool:extra
-      exec:
-      - ip -6 route del default dev eth0
-      - ip route del default dev eth0
-      - ip addr add 203.0.15.2/255.255.255.0 dev eth1
-      - ip route add default via 203.0.15.1    
+      - ip addr add 10.0.1.10/24 dev eth1
+      - ip route add default via 192.168.10.1
+    
       
   links:
-    - endpoints: ["router1:eth1", "SRV1:eth1"]
-    - endpoints: ["router1:eth2", "SRVSIIT:eth1"]
-    - endpoints: ["router1:eth3", "rtinetipv6:eth1"]
-    - endpoints: ["rtinetipv6:eth2", "PC1:eth1"]
-    - endpoints: ["SRVSIIT:eth2", "rtinetipv4:eth1"]
-    - endpoints: ["rtinetipv4:eth2", "PC2:eth1"]
+    - endpoints: ["PC1:eth1", "tayga:eth1"]
+    - endpoints: ["tayga:eth2", "rtinetipv6:eth1"]
+    - endpoints: ["rtinetipv6:eth2", "SRV1:eth1"]    
     
      
