@@ -16,7 +16,7 @@ topology:
      
     tayga:
       kind: linux
-      image: danehans/tayga:latest
+      image: danehans/tayga:v1:${TAYGA_CONF_DATA_DIR=/var/db/tayga}
       
       exec:
        - ip -6 route del default dev eth0
