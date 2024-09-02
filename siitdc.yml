@@ -81,8 +81,8 @@ topology:
     - endpoints: ["C64:eth1", "CLAT:eth1"]
     - endpoints: ["CLAT:eth2", "BR:eth1"]
     - endpoints: ["BR:eth2", "srl1:e1-1"]    
-    - endpoints: ["PLAT:eth1", "srl1:eth2"]
+    - endpoints: ["PLAT:eth1", "srl1:e1-2"]
     - endpoints: ["PLAT:eth2", "S4:eth1"]
-    - endpoints: ["BR6:eth1", "srl1:e1-2"]
+    - endpoints: ["BR6:eth1", "srl1:e1-3"]
     - endpoints: ["BR6:eth2", "S6:eth1"] 
      
