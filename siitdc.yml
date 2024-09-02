@@ -57,7 +57,7 @@ topology:
       exec:
       - ip -6 route del default dev eth0
       - ip addr add 192.0.2.80/24 dev eth1
-      - ip route add default via 192.0.2.1
+      - ip route add default dev eth1
     S6:
       kind: linux
       image: esanchezv/ubuntu2204:latest
