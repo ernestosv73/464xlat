@@ -76,12 +76,13 @@ topology:
       - ip -6 addr add 2001:db8:10:6::20/64
       - ip route add default via 10.0.0.1
       - ip -6 route add default via 2001:db8:10:6::1/64
-      
-    
-      
+                
   links:
-    - endpoints: ["PC1:eth1", "tayga:eth1"]
-    - endpoints: ["tayga:eth2", "rtinetipv6:eth1"]
-    - endpoints: ["rtinetipv6:eth2", "SRV1:eth1"]    
-    
+    - endpoints: ["C64:eth1", "CLAT:eth1"]
+    - endpoints: ["CLAT:eth2", "BR:eth1"]
+    - endpoints: ["BR:eth2", "srl1:eth1"]    
+    - endpoints: ["PLAT:eth1", "srl1:eth2"]
+    - endpoints: ["PLAT:eth2", "S4:eth1"]
+    - endpoints: ["BR6:eth1", "srl1:eth3"]
+    - endpoints: ["BR6:eth2", "S6:eth1"] 
      
