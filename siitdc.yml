@@ -118,5 +118,6 @@ topology:
     - endpoints: ["PLAT:eth1", "srl1:e1-2"]
     - endpoints: ["PLAT:eth2", "S4:eth1"]
     - endpoints: ["BR6:eth1", "srl1:e1-3"]
+    - endpoints: ["DNS:eth1", "srl1:e1-4"]
     - endpoints: ["BR6:eth2", "S6:eth1"] 
      
