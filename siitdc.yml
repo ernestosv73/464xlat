@@ -83,6 +83,9 @@ topology:
     DNS:
       kind: linux
       image: esanchezv/ubuntu2204:latest
+      binds:
+      - configs/named.conf:/etc/bind/named.conf
+      - configs/nokialacnic.2023:/etc/bind/nokialacnic.2023
       exec:
       - ip -6 route del default dev eth0
       - ip -6 addr add 2001:db8:1::53/48 dev eth1
@@ -92,7 +95,7 @@ topology:
       kind: linux
       image: docker.io/wbitt/network-multitool:extra
       binds:
-        - configs/resolv.conf:/etc/resolv.conf
+      - configs/resolv.conf:/etc/resolv.conf
       exec:
       - ip -6 route del default dev eth0
       - ip route del default dev eth0
