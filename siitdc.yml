@@ -82,6 +82,7 @@ topology:
 
     DNS:
       kind: linux
+      image: ghcr.io/hellt/network-multitool
       binds:
       - configs/server.sh:/root/server.sh
       - configs/named.conf:/etc/bind/named.conf
