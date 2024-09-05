@@ -82,7 +82,7 @@ topology:
 
     DNS:
       kind: linux
-      image: esanchezv/ubuntu2204:latest
+      image: esanchezv/dns:latest
       binds:
       - configs/named.conf:/etc/bind/named.conf
       - configs/nokialacnic.2023:/etc/bind/nokialacnic.2023
