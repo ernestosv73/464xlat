@@ -74,7 +74,7 @@ topology:
       
     S6:
       kind: linux
-      image: esanchezv/ubuntu2204:latest
+      image: ghcr.io/hellt/network-multitool
       binds:
        - configs/resolv.conf:/etc/resolv.conf
       exec:
