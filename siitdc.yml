@@ -41,10 +41,10 @@ topology:
       kind: linux
       image: esanchezv/siit-dcv2:latest
       binds:
-       - configs/clatplat.sh:/root/clatplat.sh
+       - configs/clat.sh:/root/clat.sh
       exec:
-       - chmod +x /root/clatplat.sh
-       - bash /root/clatplat.sh
+       - chmod +x /root/clat.sh
+       - bash /root/clat.sh
        - modprobe jool_siit
        - jool_siit instance add --netfilter --pool6 64:ff9b::/96
        - jool_siit eamt add 10.0.0.0/24 2001:db8:10:4::/120
