@@ -130,7 +130,7 @@ topology:
       kind: linux
       image: docker.io/wbitt/network-multitool:extra
       binds:
-       - configs/resolv.conf:/etc/resolv.conf
+       - configs/C4/resolv.conf:/etc/resolv.conf
       exec:
        - ip -6 route del default dev eth0
        - ip route del default dev eth0
