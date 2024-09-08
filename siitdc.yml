@@ -126,6 +126,17 @@ topology:
        - ip route add default via 10.0.0.1
        - ip -6 route add default via 2001:db8:10:6::1
 
+    C6:
+      kind: linux
+      image: ghcr.io/hellt/network-multitool
+      binds:
+       - configs/C4/resolv.conf:/etc/resolv.conf
+      exec:
+       - ip -6 route del default dev eth0
+       - ip route del default dev eth0
+       - ip -6 addr add 2001:db8:10:6::21/64 dev eth1
+       - ip -6 route add default via 2001:db8:10:6::1
+
     C4:
       kind: linux
       image: docker.io/wbitt/network-multitool:extra
@@ -142,6 +153,7 @@ topology:
     - endpoints: ["srl2:e1-3", "CLAT:eth1"]
     - endpoints: ["srl2:e1-1", "C64:eth1"]
     - endpoints: ["srl2:e1-2", "C4:eth1"]
+    - endpoints: ["srl2:e1-4", "C6:eth1"]
     - endpoints: ["CLAT:eth2", "BR:eth1"]
     - endpoints: ["BR:eth2", "srl1:e1-1"]    
     - endpoints: ["PLAT:eth1", "srl1:e1-2"]
