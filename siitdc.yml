@@ -41,14 +41,14 @@ topology:
       kind: linux
       image: esanchezv/siit-dcv2:latest
       binds:
-       - configs/clat.sh:/root/clat.sh
-       - configs/dnsmasq.conf:/etc/dnsmasq.conf
+       #- configs/clat.sh:/root/clat.sh
+       #- configs/dnsmasq.conf:/etc/dnsmasq.conf
       exec:
-       - chmod +x /root/clat.sh
-       - bash /root/clat.sh
-       - modprobe jool_siit
-       - jool_siit instance add --netfilter --pool6 64:ff9b::/96
-       - jool_siit eamt add 10.0.0.0/24 2001:db8:10:4::/120
+       #- chmod +x /root/clat.sh
+       #- bash /root/clat.sh
+       #- modprobe jool_siit
+       #- jool_siit instance add --netfilter --pool6 64:ff9b::/96
+       #- jool_siit eamt add 10.0.0.0/24 2001:db8:10:4::/120
        - ip -6 route del default dev eth0
        - ip -6 addr add 2001:db8:10:6::1/64 dev eth1
        - ip addr add 10.0.0.1/255.255.255.0 dev eth1
