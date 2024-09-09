@@ -2,8 +2,6 @@ apk add openrc
 sleep 1
 apk add bind 
 sleep 1
-apk add dhcpcd
-sleep 1
 apk add apache2
 touch /run/openrc/softlevel
 #sleep 1
