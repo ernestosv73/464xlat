@@ -143,11 +143,14 @@ topology:
     C4:
       kind: linux
       image: docker.io/wbitt/network-multitool:extra
-      #binds:
+      binds:
        #- configs/C4/resolv.conf:/etc/resolv.conf
+        - configs/client.sh:/root/client.sh
       exec:
+       - chmod +x /root/client.sh
+       - bash /root/client.sh
        - ip -6 route del default dev eth0
-       - ip route del default dev eth0
+       #- ip route del default dev eth0
        #- ip addr add 10.0.0.21/24 dev eth1
        #- ip route add default via 10.0.0.1
         
