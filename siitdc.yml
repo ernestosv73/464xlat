@@ -43,6 +43,7 @@ topology:
       binds:
        - configs/clat.sh:/root/clat.sh
        - configs/dnsmasq.conf:/etc/dnsmasq.conf
+       - configs/radvd.conf:/etc/radvd.conf
       exec:
        - chmod +x /root/clat.sh
        - bash /root/clat.sh
