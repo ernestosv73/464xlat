@@ -119,21 +119,21 @@ topology:
     C64:
       kind: linux
       image: ghcr.io/hellt/network-multitool
-      binds:
-       - configs/C4/resolv.conf:/etc/resolv.conf
+      #binds:
+       #- configs/C4/resolv.conf:/etc/resolv.conf
       exec:
        - ip -6 route del default dev eth0
        - ip route del default dev eth0
-       - ip addr add 10.0.0.20/24 dev eth1
-       - ip -6 addr add 2001:db8:10:6::20/64 dev eth1
-       - ip route add default via 10.0.0.1
-       - ip -6 route add default via 2001:db8:10:6::1
+       #- ip addr add 10.0.0.20/24 dev eth1
+       #- ip -6 addr add 2001:db8:10:6::20/64 dev eth1
+       #- ip route add default via 10.0.0.1
+       #- ip -6 route add default via 2001:db8:10:6::1
 
     C6:
       kind: linux
       image: ghcr.io/hellt/network-multitool
-      binds:
-       - configs/C4/resolv.conf:/etc/resolv.conf
+      #binds:
+       #- configs/C4/resolv.conf:/etc/resolv.conf
       exec:
        - ip -6 route del default dev eth0
        - ip route del default dev eth0
@@ -143,13 +143,13 @@ topology:
     C4:
       kind: linux
       image: docker.io/wbitt/network-multitool:extra
-      binds:
-       - configs/C4/resolv.conf:/etc/resolv.conf
+      #binds:
+       #- configs/C4/resolv.conf:/etc/resolv.conf
       exec:
        - ip -6 route del default dev eth0
        - ip route del default dev eth0
-       - ip addr add 10.0.0.21/24 dev eth1
-       - ip route add default via 10.0.0.1
+       #- ip addr add 10.0.0.21/24 dev eth1
+       #- ip route add default via 10.0.0.1
         
                 
   links:
