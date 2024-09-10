@@ -144,7 +144,7 @@ topology:
       kind: linux
       image: docker.io/wbitt/network-multitool:extra
       binds:
-       #- configs/C4/resolv.conf:/etc/resolv.conf
+        - configs/C4/sysctl.conf:/etc/sysctl.conf
         - configs/client.sh:/root/client.sh
       exec:
        - chmod +x /root/client.sh
