@@ -9,8 +9,6 @@ $TTL 1W
 			1D IN NS	localhost.
 			1D IN AAAA	2001:db8:1::53
 DNS			1D IN AAAA	2001:db8:1::53
-C64			1D IN AAAA	2001:db8:10:6::20
-C6                      1D IN AAAA	2001:db8:10:6::21
 S6                      1D IN AAAA	2001:db8:6::80
 S4                      1D IN A         192.0.2.80
 
