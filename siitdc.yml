@@ -95,7 +95,7 @@ topology:
       binds:
        - configs/serverweb.sh:/root/serverweb.sh
        - configs/web-server.html:/var/www/localhost/htdocs/index.html
-       - configs/resolv.conf:/etc/resolv.conf
+       #- configs/resolv.conf:/etc/resolv.conf
       exec:
        - chmod +x /root/serverweb.sh
        - bash /root/serverweb.sh
