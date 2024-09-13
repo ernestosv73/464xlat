@@ -159,7 +159,7 @@ topology:
 
     C4:
       kind: linux
-      image: docker.io/wbitt/network-multitool:extra
+      image: ghcr.io/hellt/network-multitool
       binds:
        - configs/client.sh:/root/client.sh
       exec:
