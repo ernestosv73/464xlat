@@ -92,8 +92,9 @@ topology:
        #- chmod +x /root/serverweb.sh
        #- bash /root/serverweb.sh
        - ip -6 route del default dev eth0
+       - ip route del default dev eth0
        - ip addr add 192.0.2.80/24 dev eth1
-       #- ip route add default dev eth1
+       - ip route add default dev eth1
       
     S6:
       kind: linux
