@@ -40,7 +40,7 @@ topology:
     
     CLAT:
       kind: linux
-      image: esanchezv/clat:latest
+      image: esanchezv/clatv1:latest
             
       binds:
        - configs/clat.sh:/root/clat.sh
