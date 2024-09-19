@@ -47,8 +47,8 @@ topology:
       exec:
        - chmod +x /root/clat.sh
        - bash /root/clat.sh
-       - /etc/init.d/dnsmasq restart
        - radvd
+       - /etc/init.d/dnsmasq restart
        - modprobe jool_siit
        - jool_siit instance add --netfilter --pool6 64:ff9b::/96
        - jool_siit eamt add 10.0.0.0/24 2001:db8:10:4::/120
