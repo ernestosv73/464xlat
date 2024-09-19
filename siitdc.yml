@@ -49,7 +49,7 @@ topology:
       exec:
        - chmod +x /root/clat.sh
        - bash /root/clat.sh
-       - radvd
+       #- radvd
        - /etc/init.d/dnsmasq restart
        - modprobe jool_siit
        - jool_siit instance add --netfilter --pool6 64:ff9b::/96
