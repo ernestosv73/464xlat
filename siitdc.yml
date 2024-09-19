@@ -15,7 +15,12 @@ topology:
       kind: nokia_srlinux
       image: ghcr.io/nokia/srlinux:23.10.1
       type: ixrd3
-      startup-config: srlsw/config.json   
+      startup-config: srlsw/config.json
+      stages:
+        create:
+          wait-for:
+            - node: srl1
+              stage: healthy
     
     BR:
       kind: linux
@@ -40,6 +45,12 @@ topology:
     CLAT:
       kind: linux
       image: esanchezv/siit-dcv2:latest
+      stages:
+        create:
+          wait-for:
+            - node: srl2
+              stage: healthy
+      
       binds:
        - configs/clat.sh:/root/clat.sh
        - configs/dnsmasq.conf:/etc/dnsmasq.conf
