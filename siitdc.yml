@@ -39,7 +39,7 @@ topology:
     
     CLAT:
       kind: linux
-      image: esanchezv/clat:latest
+      image: esanchezv/siit-dcv2:latest
       binds:
        - configs/clat.sh:/root/clat.sh
        - configs/dnsmasq.conf:/etc/dnsmasq.conf
