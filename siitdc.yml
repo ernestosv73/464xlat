@@ -40,17 +40,17 @@ topology:
     
     CLAT:
       kind: linux
-      image: esanchezv/siit-dcv2:latest
+      image: esanchezv/clatv1:latest
             
       binds:
        - configs/clat.sh:/root/clat.sh
-       #- configs/dnsmasq.conf:/etc/dnsmasq.conf
+       - configs/dnsmasq.conf:/etc/dnsmasq.conf
        - configs/radvd.conf:/etc/radvd.conf
       exec:
        - chmod +x /root/clat.sh
        - bash /root/clat.sh
        #- radvd
-       #- /etc/init.d/dnsmasq restart
+       - /etc/init.d/dnsmasq restart
        - modprobe jool_siit
        - jool_siit instance add --netfilter --pool6 64:ff9b::/96
        - jool_siit eamt add 10.0.0.0/24 2001:db8:10:4::/120
