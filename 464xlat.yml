@@ -120,7 +120,7 @@ topology:
       binds:
        - configs/server.sh:/root/server.sh
        - configs/named.conf:/etc/bind/named.conf
-       - configs/nokialacnic.2023:/etc/bind/nokialacnic.2023
+       - configs/midominio.2024:/etc/bind/midominio.2024
       exec:
        - chmod +x /root/server.sh
        - bash /root/server.sh
