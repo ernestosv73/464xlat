@@ -86,7 +86,7 @@ topology:
        - "sysctl -w net.ipv6.conf.all.forwarding=1"
     
     S4:
-      kind: linux
+      kind: linux # "Alpine Linux v3.12"
       image: ghcr.io/hellt/network-multitool
       binds:
        #- configs/serverweb.sh:/root/serverweb.sh
@@ -101,7 +101,7 @@ topology:
        - ip route add default dev eth1
       
     S6:
-      kind: linux
+      kind: linux # "Alpine Linux v3.12"
       image: ghcr.io/hellt/network-multitool
       binds:
        #- configs/serverweb.sh:/root/serverweb.sh
@@ -115,7 +115,7 @@ topology:
        - ip -6 route add default via 2001:db8:6::1
 
     DNS:
-      kind: linux
+      kind: linux # "Alpine Linux v3.12"
       image: ghcr.io/hellt/network-multitool
       binds:
        - configs/server.sh:/root/server.sh
@@ -132,7 +132,7 @@ topology:
        - /usr/sbin/named
       
     C64:
-      kind: linux
+      kind: linux # "Alpine Linux v3.12"
       image: ghcr.io/hellt/network-multitool
       binds:
        - configs/client.sh:/root/client.sh
@@ -161,8 +161,8 @@ topology:
        #- ip -6 addr add 2001:db8:10:6::21/64 dev eth1
        #- ip -6 route add default via 2001:db8:10:6::1
 
-    C4:
-      kind: linux
+    C4: 
+      kind: linux # "Alpine Linux v3.12"
       image: ghcr.io/hellt/network-multitool
       binds:
        - configs/client.sh:/root/client.sh
